@@ -1,0 +1,6 @@
+$kind: http-request
+name: Agents Status
+method: GET
+url: '{{baseUrl}}/agents/status'
+order: 3000
+description: Get the status of all agents

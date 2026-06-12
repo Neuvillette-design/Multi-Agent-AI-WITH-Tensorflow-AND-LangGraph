@@ -1,9 +1,8 @@
 from src.models.base import BaseModel
 
-class TextClassifier(BaseModel):
+class SummarizerModel(BaseModel):
     def predict(self, text: str):
 
         return {
-            "label": "Technology",
-            "confidence": 0.99
+            "This is the summary!"
         }

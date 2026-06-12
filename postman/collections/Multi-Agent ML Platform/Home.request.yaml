@@ -1,0 +1,6 @@
+$kind: http-request
+name: Home
+method: GET
+url: '{{baseUrl}}/'
+order: 1000
+description: Home endpoint
