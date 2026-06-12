@@ -4,6 +4,7 @@ from src.agents.state import AgentState
 from src.agents.classifier_agent import ClassifierAgent
 from src.agents.sentiment_agent import SentimentAgent
 from src.agents.summarizer_agent import SummarizerAgent
+from src.models.registry import registry
 
 class orchastrator:
     def __init__(self):
@@ -17,6 +18,23 @@ class orchastrator:
         state["status"] = "processing"
 
         return state
+    
+    async def classifier_node(state):
+        prediction = registry.classifier.predict(state["input_text"])
+
+        return {
+            "classification": prediction,
+            "completed_tasks": ["classifier"]
+        }
+    
+    async def sentiment_node(state):
+
+        prediction = registry.sentiment.predict(state["input_text"])
+
+        return {
+            "Sentiment": prediction,
+            "completed_tasks": ["sentiment"]
+        }
     
     async def aggregator_node(self, state: AgentState,) -> AgentState:
 
